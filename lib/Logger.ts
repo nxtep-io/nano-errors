@@ -11,6 +11,11 @@ export interface LoggerOptions extends winston.LoggerOptions {
 export type LoggerInstance = winston.Logger;
 
 export class Logger {
+  /**
+   * The singleton logger instance, needs to be created using `Logger.initialize()`.
+   * 
+   * @see Logger.initialize()
+   */
   protected static instance: LoggerInstance;
 
   /**

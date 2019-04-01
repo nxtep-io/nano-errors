@@ -1,5 +1,9 @@
 import * as uuid from 'uuid';
 
+/**
+ * The base error details enables the developer to add
+ * specific metadata to their errors.
+ */
 export class BaseErrorDetails {
   [key: string]: any;
 
@@ -18,12 +22,27 @@ export class BaseErrorDetails {
  * Basic features:
  * - Unique stack id using UUID v4
  * - Serializers: toObject and toJSON
- * - Better stack trace mapping
+ * - Better stack trace mapping using "clean-stack"
  */
 export class BaseError extends Error {
+  /**
+   * The unique exception id.
+   */
   public stackId: string;
+
+  /**
+   * The error details for easier tracking of exceptions
+   */
   public details: BaseErrorDetails;
+
+  /**
+   * The error original message without the generated metadata.
+   */
   public originalMessage: string;
+  
+  /**
+   * The `clean-stack` wrapper when available.
+   */
   protected _cleanStack;
 
   constructor(message, details: any = new BaseErrorDetails()) {
@@ -51,7 +70,7 @@ export class BaseError extends Error {
   }
 
   /**
-   * Generates POJO for this error instance.
+   * Generates plain object for this error instance.
    */
   public toObject() {
     let stack = this.stack;
@@ -73,7 +92,7 @@ export class BaseError extends Error {
   }
 
   /**
-   * Generates JSON for this error instance.
+   * Generates clean object for this error instance ready for JSON stringification (optional).
    *
    * @param stringify Flag to enable stringification
    */

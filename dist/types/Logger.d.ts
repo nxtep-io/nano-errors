@@ -5,6 +5,11 @@ export interface LoggerOptions extends winston.LoggerOptions {
 }
 export declare type LoggerInstance = winston.Logger;
 export declare class Logger {
+    /**
+     * The singleton logger instance, needs to be created using `Logger.initialize()`.
+     *
+     * @see Logger.initialize()
+     */
     protected static instance: LoggerInstance;
     /**
      * The default transports thay will be enabled in the singleton.
