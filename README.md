@@ -13,6 +13,10 @@ yarn add "nxtep-io/nano-errors";
 npm install "github:nxtep-io/nano-errors";
 ```
 
+## API Docs
+
+Check the published Github Page at https://nxtep-io.github.io/nano-errors/
+
 ## License
 
 The project is licensed under the [MIT License](./LICENSE.md).
