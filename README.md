@@ -1,7 +1,8 @@
-nano-fsm
-========
+nano-errors
+===========
 
-A minimalistic error framework for enhanced exceptions in JS environments.
+A minimalistic error and logging framework for a enhanced exception handling experience in TS / JS environments.
+
 
 ## Getting started
 
