@@ -1,7 +1,7 @@
 import jsonStringify from 'fast-safe-stringify';
 import { MESSAGE } from 'triple-beam';
 import { format } from 'winston';
-import { BaseError } from './BaseError';
+import { BaseError } from '../BaseError';
 
 export const lineFormat = format((info: any) => {
   const stringifiedRest = jsonStringify({
@@ -29,7 +29,7 @@ export const enumerateErrorFormat = format((info: any) => {
       message: info.message.message,
       stack: info.message.stack,
       ...info.message
-    };
+    }; 
   }
 
   if (info.message instanceof Error) {

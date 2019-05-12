@@ -21,3 +21,6 @@ try {
     }
   });
 }
+
+const a = new UnauthorizedError('user it forbidden').toJSON(true);
+const b = new UnauthorizedError('user it forbidden').toJSON(false);
