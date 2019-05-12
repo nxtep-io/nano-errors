@@ -45,6 +45,16 @@ describe("lib.error.BaseError", () => {
     });
   });
 
+  it("should instantiate properly with an inherit stack trace", () => {
+    const originalError = new Error('Test with inherit stack');
+    const baseError = new BaseError(originalError);
+
+    const originalStack = originalError.stack.toString();
+    const baseStack = baseError.stack.toString();
+
+    expect(originalStack).toEqual(baseStack);
+  });
+
   describe('with failing clean-stack', async () => {
     beforeAll(() => MockCleanStack.fail(true));
     afterAll(() => MockCleanStack.fail(false));

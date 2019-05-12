@@ -39,21 +39,29 @@ export class BaseError extends Error {
    * The error original message without the generated metadata.
    */
   public originalMessage: string;
-  
+
   /**
    * The `clean-stack` wrapper when available.
    */
   protected _cleanStack;
 
-  constructor(message, details: any = new BaseErrorDetails()) {
+  constructor(input: any, details: any = new BaseErrorDetails()) {
     const stackId = uuid.v4();
+    const message = input.message || input;
+
     super(`${message} (stackId: ${stackId})`);
     this.stackId = stackId;
     this.originalMessage = message;
     this.name = this.constructor.name;
     this.details = details instanceof BaseErrorDetails ? details : new BaseErrorDetails(details);
 
-    if (typeof Error.captureStackTrace === 'function') {
+    if (input.stack || details.stack) {
+      const stack: string[] = (input.stack || details.stack).split('\n');
+      const header = stack.shift();
+      stack.unshift(`    inherits ${header}`);
+      stack.unshift(`${this.name}: ${this.message}`);
+      this.stack = stack.join('\n');
+    } else if (typeof Error.captureStackTrace === 'function') {
       Error.captureStackTrace(this, this.constructor);
     } else {
       this.stack = (new Error(message)).stack;
@@ -87,6 +95,7 @@ export class BaseError extends Error {
       message: this.message,
       stackId: this.stackId,
       details: this.details,
+      // tslint:disable-next-line:object-shorthand-properties-first
       stack,
     };
   }
