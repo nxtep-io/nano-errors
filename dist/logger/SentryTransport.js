@@ -18,9 +18,7 @@ class SentryTransport extends Transport {
         super(options);
         this.name = 'Sentry';
         Sentry.init(Object.assign({ dsn: '', patchGlobal: false, install: false, environment: process.env.NODE_ENV, attachStacktrace: true, tags: {}, extra: {}, integrations: [
-                new Integrations.Dedupe(),
                 new Integrations.ExtraErrorData(),
-                new Integrations.RewriteFrames()
             ] }, options));
     }
     log(info, done) {

@@ -23,9 +23,7 @@ export class SentryTransport extends Transport {
       tags: {},
       extra: {},
       integrations: [
-        new Integrations.Dedupe(),
         new Integrations.ExtraErrorData(),
-        // new Integrations.RewriteFrames()
       ],
       ...options,
     });

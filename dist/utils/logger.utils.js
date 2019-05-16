@@ -53,12 +53,19 @@ exports.winstonLevelToSentryLevel = {
 };
 exports.prepareSentryMeta = (info) => {
     const _a = Object.assign({}, info), { level, tags, modules, platform = os.platform(), server_name = os.hostname() } = _a, extra = __rest(_a, ["level", "tags", "modules", "platform", "server_name"]);
+    let stack;
+    // Generate mocked stack for objects
+    if (info.level !== 'error') {
+        const event = new Error(info.message);
+        event.name = info.level;
+        stack = event.stack;
+    }
     const result = {
         modules,
         server_name,
         platform,
-        extra: Object.assign({}, extra),
-        tags: Object.assign({}, tags, { platform, stackId: extra.stackId }),
+        extra: Object.assign({ stack }, extra),
+        tags: Object.assign({ platform, stackId: extra.stackId }, tags),
         message: info.message.message || info.message,
         level: exports.winstonLevelToSentryLevel[info.level],
     };
