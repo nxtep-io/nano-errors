@@ -54,7 +54,7 @@ export class BaseError extends Error {
 
     if (input && input.message) {
       // Handle input message from another error
-      message = input.message.split('(stackId:')[0];
+      message = input.message.split(' (stackId:')[0];
       originalMessage = input.message;
       stackId = input.stackId || details.stackId || stackId;
     } else if (input && typeof input.toString === 'function') {

@@ -13,6 +13,7 @@ export declare class BaseErrorDetails {
  * - Unique stack id using UUID v4
  * - Serializers: toObject and toJSON
  * - Better stack trace mapping using "clean-stack"
+ * - Inherits errors with rich stack trace and json outputs
  */
 export declare class BaseError extends Error {
     /**
@@ -30,8 +31,8 @@ export declare class BaseError extends Error {
     /**
      * The `clean-stack` wrapper when available.
      */
-    protected _cleanStack: any;
-    constructor(message: any, details?: any);
+    protected _cleanStack?: (input: string) => string;
+    constructor(input?: any, details?: any);
     /**
      * Generates plain object for this error instance.
      */

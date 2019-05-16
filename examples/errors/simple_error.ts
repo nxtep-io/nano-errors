@@ -1,4 +1,4 @@
-import { BaseError } from "../lib";
+import { BaseError } from "../../lib";
 
 export class UnauthorizedError extends BaseError {
 

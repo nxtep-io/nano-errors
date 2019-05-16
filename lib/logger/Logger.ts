@@ -1,7 +1,7 @@
 import * as winston from 'winston';
 import * as Transport from 'winston-transport';
-import { BaseError } from './BaseError';
-import { enumerateErrorFormat, lineFormat } from "./utils";
+import { BaseError } from '../BaseError';
+import { enumerateErrorFormat, lineFormat } from "../utils";
 
 export interface LoggerOptions extends winston.LoggerOptions {
   transports?: Transport[];
@@ -63,7 +63,10 @@ export class Logger {
     };
 
     // Construct new Winston logger instance with enhanced error handling
-    const logger = winston.createLogger({ format: winston.format.combine(enumerateErrorFormat()), ...opt });;
+    const logger = winston.createLogger({
+      format: winston.format.combine(enumerateErrorFormat()),
+      ...opt
+    });;
 
     if (!this.instance) {
       this.instance = logger;

@@ -7,10 +7,12 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
     "noImplicitAny": false,
-    "inlineSourceMap": true,
+    "sourceMap": true,
     "inlineSources": true,
+    "sourceRoot": "./lib",
     "outDir": "./dist",
     "declaration": true,
+    "resolveJsonModule": true,
     "removeComments": false,
     "declarationDir": "dist/types",
     "lib": [
