@@ -5,22 +5,64 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "node",
+      "request": "launch",
+      "name": "ts-node/logger/sentry.ts",
+      "runtimeExecutable": "node",
+      "cwd": "${workspaceRoot}",
+      "sourceMaps": true,
+      "port": 9229,
+      "runtimeArgs": [
+        "--inspect-brk=9229",
+        "--require",
+        "ts-node/register",
+        "${workspaceRoot}/examples/logger/sentry.ts"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+    },
+    {
       "name": "Debug Jest Tests",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": "node",
+      "sourceMaps": true,
+      "port": 9229,
+      "runtimeArgs": [
+        "--require",
+        "ts-node/register",
+        "--inspect-brk=9229",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand",
+        "--collectCoverage=false",
+        "--config=jest.json"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+    },
+    {
+      "name": "Debug Jest Single File",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "node",
+      "sourceMaps": true,
       "port": 9229,
       "runtimeArgs": [
         "--require",
         "ts-node/register",
         "--inspect=9229",
         "${workspaceRoot}/node_modules/.bin/jest",
+        "${relativeFile}",
         "--runInBand",
+        "--collectCoverage=false",
         "--config=jest.json"
       ],
+      "env": {
+      },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-    },
+    }
   ]
 }

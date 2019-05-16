@@ -1,2 +1,2 @@
 export * from './BaseError';
-export * from './Logger';
+export * from './logger';

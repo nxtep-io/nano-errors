@@ -1,7 +1,9 @@
+import * as Sentry from '@sentry/node';
 import jsonStringify from 'fast-safe-stringify';
+import * as os from 'os';
 import { MESSAGE } from 'triple-beam';
-import { format } from 'winston';
-import { BaseError } from './BaseError';
+import { format, info } from 'winston';
+import { BaseError } from '../BaseError';
 
 export const lineFormat = format((info: any) => {
   const stringifiedRest = jsonStringify({
@@ -58,3 +60,54 @@ export const enumerateErrorFormat = format((info: any) => {
 
   return info;
 });
+
+
+export const winstonLevelToSentryLevel = {
+  silly: 'debug',
+  verbose: 'debug',
+  info: 'info',
+  debug: 'debug',
+  warn: 'warning',
+  error: 'error',
+  default: info,
+};
+
+
+export const prepareSentryMeta = (info: { level: string, tags: any, message: any }): Sentry.Event | Error => {
+  const {
+    level,
+    tags,
+    modules,
+    platform = os.platform(),
+    server_name = os.hostname(),
+    ...extra
+  }: any = { ...info };
+
+  let stack: string | undefined;
+
+  // Generate mocked stack for objects
+  if (info.level !== 'error') {
+    const event = new Error(info.message);
+    event.name = info.level;
+    stack = event.stack;
+  }
+
+  const result = {
+    modules,
+    server_name,
+    platform,
+    extra: {
+      stack,
+      ...extra,
+    },
+    tags: {
+      platform,
+      stackId: extra.stackId,
+      ...tags,
+    },
+    message: info.message.message || info.message,
+    level: winstonLevelToSentryLevel[info.level],
+  };
+
+  return result;
+};

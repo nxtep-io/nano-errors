@@ -46,45 +46,50 @@ describe("lib.logger", () => {
 
   it("should send simple error", () => {
     const logger = Logger.initialize();
-    logger.error(new Error('Unit test error'));
+    logger.error(new Error("Unit test error"));
   });
 
   it("should send simple base error", () => {
     const logger = Logger.initialize();
-    logger.error(new BaseError('Unit test base error', {
-      error: true
-    }));
+    logger.error(
+      new BaseError("Unit test base error", {
+        error: true
+      })
+    );
   });
 
   it("should send simple error with message", () => {
     const logger = Logger.initialize();
-    logger.error("Sample base error", new Error('Unit test error'));
+    logger.error("Sample base error", new Error("Unit test error"));
   });
 
   it("should send simple base error with message", () => {
     const logger = Logger.initialize();
-    logger.error("Sample base error", new BaseError('Unit test base error', {
-      error: true
-    }));
+    logger.error(
+      "Sample base error",
+      new BaseError("Unit test base error", {
+        error: true
+      })
+    );
   });
 
-  describe('some corner cases', async () => {
+  describe("some corner cases", async () => {
     it("should send simple info object with message", () => {
       Logger.initialize().info({ message: { test: true } });
     });
 
     it("should send simple error", () => {
       Logger.initialize().error({
-        message: new Error('Unit test error')
+        message: new Error("Unit test error")
       });
     });
 
     it("should send simple base error", () => {
       Logger.initialize().error({
-        message: new BaseError('Unit test base error', {
+        message: new BaseError("Unit test base error", {
           error: true
         })
       });
     });
-  })
+  });
 });

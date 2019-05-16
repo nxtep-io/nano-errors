@@ -1,5 +1,5 @@
 import { BaseError } from "../lib";
-import * as MockCleanStack from '../__mocks__/clean-stack';
+import * as MockCleanStack from "../__mocks__/clean-stack";
 
 describe("lib.error.BaseError", () => {
   it("should instantiate a BaseError properly", () => {
@@ -45,7 +45,27 @@ describe("lib.error.BaseError", () => {
     });
   });
 
-  describe('with failing clean-stack', async () => {
+  it("should instantiate properly with a function as input", () => {
+    const error = new BaseError(() => "blah");
+    expect(error.message.split("() => blah")).toHaveLength(1);
+  });
+
+  it("should instantiate properly with a undefined as input", () => {
+    const error = new BaseError();
+    expect(error.message.split(" undefined ")).toHaveLength(1);
+  });
+
+  it("should instantiate properly with an inherit stack trace", () => {
+    const originalError = new Error("Test with inherit stack");
+    const baseError = new BaseError(originalError);
+
+    const originalStack = originalError.stack.toString();
+    const baseStack = baseError.stack.toString();
+
+    expect(originalStack.split(baseStack)).toHaveLength(1);
+  });
+
+  describe("with failing clean-stack", async () => {
     beforeAll(() => MockCleanStack.fail(true));
     afterAll(() => MockCleanStack.fail(false));
 
@@ -64,5 +84,5 @@ describe("lib.error.BaseError", () => {
       const jsonStr = error.toJSON(true);
       expect(typeof jsonStr).toBe(typeof "string");
     });
-  })
+  });
 });
