@@ -47,19 +47,21 @@ export class BaseError extends Error {
    */
   protected _cleanStack?: (input: string) => string;
 
-  constructor(input: any, details: any = new BaseErrorDetails()) {
+  constructor(input?: any, details: any = new BaseErrorDetails()) {
     let message: string;
     let originalMessage: string;
-    const stackId = uuid.v4();
+    let stackId: string = uuid.v4();
 
     if (input && input.message) {
       // Handle input message from another error
-      message = input.message;
+      message = input.message.split('(stackId:')[0];
       originalMessage = input.message;
+      stackId = input.stackId || details.stackId || stackId;
     } else if (input && typeof input.toString === 'function') {
       // Handle input message as string
       message = input.toString();
       originalMessage = input.toString();
+      stackId = input.stackId || details.stackId || stackId;
     } else {
       // We don't really know how to handle this case
       // Passing on to prevent breaking changes, but this might catch up onto us
@@ -74,7 +76,7 @@ export class BaseError extends Error {
     this.details = details instanceof BaseErrorDetails ? details : new BaseErrorDetails(details);
 
     // Prepare instance stack trace
-    if (input.stack || details.stack) {
+    if ((input && input.stack) || details.stack) {
       // Tries to inherit original stack trace, input looks like an Error instance
       this.stack = inheritStackTrace(this, input.stack || details.stack);
     } else if (typeof Error.captureStackTrace === 'function') {
