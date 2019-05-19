@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": false,
     "noImplicitAny": false,
-    "sourceMap": true,
+    "inlineSourceMap": true,
     "inlineSources": true,
     "sourceRoot": "./lib",
     "outDir": "./dist",
