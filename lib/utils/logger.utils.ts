@@ -23,6 +23,22 @@ export const lineFormat = format((info: any) => {
   return info;
 });
 
+export const tableFormat = format((info: any) => {
+
+  const padding = info.padding && info.padding[info.level] || '';
+  info[MESSAGE] = `${info.level}:${padding} ${info.message}`;
+
+  info.table = JSON.parse(jsonStringify({
+      ...info,
+      level: undefined,
+      message: undefined,
+      splat: undefined
+    }, null, 2));
+
+  return info;
+});
+
+
 // Quick and dirty fix for Winston@3.0.0 issue with errors
 // @see {https://github.com/winstonjs/winston/issues/1338}
 export const enumerateErrorFormat = format((info: any) => {

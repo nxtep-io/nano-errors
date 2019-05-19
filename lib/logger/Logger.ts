@@ -1,10 +1,12 @@
 import * as winston from 'winston';
 import * as Transport from 'winston-transport';
 import { BaseError } from '../BaseError';
-import { enumerateErrorFormat, lineFormat } from "../utils";
+import { enumerateErrorFormat, lineFormat, tableFormat } from "../utils";
+import { ConsoleTransport } from './ConsoleTransport';
 
 export interface LoggerOptions extends winston.LoggerOptions {
   transports?: Transport[];
+
 }
 
 // Export the winston.Logger type so we don't need to install the winston types on dependants
@@ -22,12 +24,21 @@ export class Logger {
    * The default transports thay will be enabled in the singleton.
    */
   static DEFAULT_TRANSPORTS: LoggerInstance['transports'] = [
-    new winston.transports.Console({
+    // new winston.transports.Console({
+    //   level: process.env.LOG_LEVEL || 'silly',
+    //   format: winston.format.combine(
+    //     enumerateErrorFormat(),
+    //     winston.format.colorize(),
+    //     lineFormat(),
+    //   ),
+    // }),
+    new ConsoleTransport({
       level: process.env.LOG_LEVEL || 'silly',
       format: winston.format.combine(
         enumerateErrorFormat(),
         winston.format.colorize(),
-        lineFormat(),
+        tableFormat(),
+        // lineFormat(),
       ),
     }),
   ];
