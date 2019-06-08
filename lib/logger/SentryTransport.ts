@@ -22,6 +22,15 @@ export class SentryTransport extends Transport {
       attachStacktrace: true,
       tags: {},
       extra: {},
+      beforeSend: event => {
+        // If it's a ts-framework generic 404 error, fingerprint it
+        if (event.message.includes("The resource was not found")) {
+          if (!event.fingerprint) { event.fingerprint = [] }
+          event.fingerprint.push("404");
+        }
+
+        return event;
+      },
       integrations: [
         new Integrations.ExtraErrorData({ depth: 6 }),
       ],
