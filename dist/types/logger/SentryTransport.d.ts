@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/node';
 import * as Transport from 'winston-transport';
 export interface SentryTransportOptions extends Sentry.NodeOptions, Transport.TransportStreamOptions {
+    fingerprint404?: boolean;
 }
 export declare class SentryTransport extends Transport {
     readonly name = "Sentry";
