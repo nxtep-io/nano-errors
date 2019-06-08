@@ -5,6 +5,7 @@ import { BaseError } from '../BaseError';
 import { prepareSentryMeta } from '../utils';
 
 export interface SentryTransportOptions extends Sentry.NodeOptions, Transport.TransportStreamOptions {
+  fingerprint404?: boolean;
 }
 
 export class SentryTransport extends Transport {
@@ -22,6 +23,15 @@ export class SentryTransport extends Transport {
       attachStacktrace: true,
       tags: {},
       extra: {},
+      beforeSend: event => {
+        // If it's a ts-framework generic 404 error, fingerprint it
+        if (options.fingerprint404 && event.message.includes("The resource was not found")) {
+          if (!event.fingerprint) { event.fingerprint = [] }
+          event.fingerprint.push("404");
+        }
+
+        return event;
+      },
       integrations: [
         new Integrations.ExtraErrorData({ depth: 6 }),
       ],
