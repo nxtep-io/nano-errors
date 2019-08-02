@@ -43,7 +43,6 @@ export class SentryTransport extends Transport {
         scope.setExtras(extra);
         Sentry.captureException(error);
       });
-      Sentry.captureException(error);
     } else {
       Sentry.withScope(scope => {
         scope.setExtras(extra);

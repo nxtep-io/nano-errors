@@ -14,4 +14,4 @@ export declare const prepareSentryMeta: (info: {
     level: string;
     tags: any;
     message: any;
-}) => Error | Sentry.Event;
+}) => [Error | Sentry.Event, object];

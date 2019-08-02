@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>nano-errors (v1.1.1)</title>
+	<title>nano-errors (v1.1.2)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">nano-errors (v1.1.1)</a>
+					<a href="index.html" class="title">nano-errors (v1.1.2)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> nano-errors (v1.1.1)</h1>
+			<h1> nano-errors (v1.1.2)</h1>
 		</div>
 	</div>
 </header>
@@ -120,7 +120,7 @@
 					<div class="tsd-signature tsd-kind-icon">Logger<wbr>Instance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/logger/Logger.ts#L11">logger/Logger.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/logger/Logger.ts#L11">logger/Logger.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -133,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">enumerate<wbr>Error<wbr>Format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;format((info: any) &#x3D;&gt; {if (info.message instanceof BaseError) {return {message: info.message.message,stack: info.message.stack,...info.message};}if (info.message instanceof Error) {return {message: info.message.message,stack: info.message.stack,...info.message};}if (info instanceof BaseError) {return {message: info.message,stack: info.stack,...info,};}if (info instanceof Error) {return {message: info.message,stack: info.stack,...info,};}return info;})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L28">utils/logger.utils.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L28">utils/logger.utils.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -164,7 +164,7 @@
 					<div class="tsd-signature tsd-kind-icon">line<wbr>Format<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;format((info: any) &#x3D;&gt; {const stringifiedRest &#x3D; jsonStringify({...info,level: undefined,message: undefined,splat: undefined}, null, 2);const padding &#x3D; info.padding &amp;&amp; info.padding[info.level] || &#x27;&#x27;;if (stringifiedRest !&#x3D;&#x3D; &#x27;{}&#x27;) {info[MESSAGE] &#x3D; &#x60;${info.level}:${padding} ${info.message} ${stringifiedRest}&#x60;;} else {info[MESSAGE] &#x3D; &#x60;${info.level}:${padding} ${info.message}&#x60;;}return info;})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L8">utils/logger.utils.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L8">utils/logger.utils.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -202,7 +202,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/error.utils.ts#L3">utils/error.utils.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/error.utils.ts#L3">utils/error.utils.ts:3</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -222,13 +222,13 @@
 					<a name="preparesentrymeta" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> prepare<wbr>Sentry<wbr>Meta</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">prepare<wbr>Sentry<wbr>Meta<span class="tsd-signature-symbol">(</span>info<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Error</span></li>
+						<li class="tsd-signature tsd-kind-icon">prepare<wbr>Sentry<wbr>Meta<span class="tsd-signature-symbol">(</span>info<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L76">utils/logger.utils.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L76">utils/logger.utils.ts:76</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -248,10 +248,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Event</span>
-								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">Error</span>
-							</h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -264,7 +261,7 @@
 					<div class="tsd-signature tsd-kind-icon">winston<wbr>Level<wbr>ToSentry<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L65">utils/logger.utils.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L65">utils/logger.utils.ts:65</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal tsd-is-external">
@@ -273,7 +270,7 @@
 						<div class="tsd-signature tsd-kind-icon">debug<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;debug&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L69">utils/logger.utils.ts:69</a></li>
+								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L69">utils/logger.utils.ts:69</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -283,7 +280,7 @@
 						<div class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">LeveledLogMethod</span><span class="tsd-signature-symbol"> =&nbsp;info</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L72">utils/logger.utils.ts:72</a></li>
+								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L72">utils/logger.utils.ts:72</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -293,7 +290,7 @@
 						<div class="tsd-signature tsd-kind-icon">error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;error&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L71">utils/logger.utils.ts:71</a></li>
+								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L71">utils/logger.utils.ts:71</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -303,7 +300,7 @@
 						<div class="tsd-signature tsd-kind-icon">info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;info&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L68">utils/logger.utils.ts:68</a></li>
+								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L68">utils/logger.utils.ts:68</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -313,7 +310,7 @@
 						<div class="tsd-signature tsd-kind-icon">silly<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;debug&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L66">utils/logger.utils.ts:66</a></li>
+								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L66">utils/logger.utils.ts:66</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -323,7 +320,7 @@
 						<div class="tsd-signature tsd-kind-icon">verbose<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;debug&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L67">utils/logger.utils.ts:67</a></li>
+								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L67">utils/logger.utils.ts:67</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -333,7 +330,7 @@
 						<div class="tsd-signature tsd-kind-icon">warn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;warning&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/0b7d0c4/lib/utils/logger.utils.ts#L70">utils/logger.utils.ts:70</a></li>
+								<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/utils/logger.utils.ts#L70">utils/logger.utils.ts:70</a></li>
 							</ul>
 						</aside>
 					</section>
