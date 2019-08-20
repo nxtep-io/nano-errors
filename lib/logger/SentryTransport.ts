@@ -34,14 +34,20 @@ export class SentryTransport extends Transport {
       return done();
     }
 
-    const meta = prepareSentryMeta(info);
+    const [meta,extra] = prepareSentryMeta(info);
 
     if (info.level === 'error') {
       const error = new BaseError(info, meta);
       error.name = info['name'] || BaseError.name;
-      Sentry.captureException(error);
+      Sentry.withScope(scope => {
+        scope.setExtras(extra);
+        Sentry.captureException(error);
+      });
     } else {
-      Sentry.captureEvent(meta);
+      Sentry.withScope(scope => {
+        scope.setExtras(extra);
+        Sentry.captureEvent(meta);
+      });
     }
 
     done();

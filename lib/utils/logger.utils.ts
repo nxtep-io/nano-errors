@@ -73,7 +73,7 @@ export const winstonLevelToSentryLevel = {
 };
 
 
-export const prepareSentryMeta = (info: { level: string, tags: any, message: any }): Sentry.Event | Error => {
+export const prepareSentryMeta = (info: { level: string, tags: any, message: any }): [Sentry.Event | Error, object] => {
   const {
     level,
     tags,
@@ -92,14 +92,10 @@ export const prepareSentryMeta = (info: { level: string, tags: any, message: any
     stack = event.stack;
   }
 
-  const result = {
+  const meta = {
     modules,
     server_name,
     platform,
-    extra: {
-      stack,
-      ...extra,
-    },
     tags: {
       platform,
       stackId: extra.stackId,
@@ -109,5 +105,10 @@ export const prepareSentryMeta = (info: { level: string, tags: any, message: any
     level: winstonLevelToSentryLevel[info.level],
   };
 
-  return result;
+  const extraObject = {
+      stack,
+      ...extra,
+  }
+
+  return [meta, extraObject];
 };
