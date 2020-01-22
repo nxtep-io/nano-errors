@@ -44,20 +44,6 @@ describe("lib.logger", () => {
     logger.info("Sample test", { test: true });
   });
 
-  it("should send simple error", () => {
-    const logger = Logger.initialize();
-    logger.error(new Error("Unit test error"));
-  });
-
-  it("should send simple base error", () => {
-    const logger = Logger.initialize();
-    logger.error(
-      new BaseError("Unit test base error", {
-        error: true
-      })
-    );
-  });
-
   it("should send simple error with message", () => {
     const logger = Logger.initialize();
     logger.error("Sample base error", new Error("Unit test error"));
@@ -90,6 +76,37 @@ describe("lib.logger", () => {
           error: true
         })
       });
+    });
+  });
+
+  describe("production logger", async () => {
+    beforeEach(() => {
+      Logger.initialize({ transports: [Logger.DEFAULT_PRODUCTION_TRANSPORT] });
+    });
+
+    it("should send simple info object with message", () => {
+      const logger = Logger.getInstance();
+      logger.info({ test: true });
+    });
+
+    it("should send simple info object with message", () => {
+      const logger = Logger.getInstance();
+      logger.info("Sample test", { test: true });
+    });
+
+    it("should send simple error with message", () => {
+      const logger = Logger.getInstance();
+      logger.error("Sample base error", new Error("Unit test error"));
+    });
+
+    it("should send simple base error with message", () => {
+      const logger = Logger.getInstance();
+      logger.error(
+        "Sample base error",
+        new BaseError("Unit test base error", {
+          error: true
+        })
+      );
     });
   });
 });
