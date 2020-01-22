@@ -1,6 +1,6 @@
 {
   "name": "nano-errors",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "A minimalistic error framework for TS",
   "author": "Luis Brito <luis@nxtep.io>",
   "license": "MIT",
@@ -59,7 +59,7 @@
     "tslint-config-airbnb": "^5.9.2",
     "tslint-config-prettier": "^1.14.0",
     "tslint-no-circular-imports": "^0.5.0",
-    "typedoc": "^0.14.2",
+    "typedoc": "^0.16.8",
     "typescript": "^3.7.4"
   },
   "optionalDependencies": {

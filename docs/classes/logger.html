@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Logger | nano-errors (v1.1.2)</title>
+	<title>Logger | nano-errors (v1.2.0)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">nano-errors (v1.1.2)</a>
+					<a href="../index.html" class="title">nano-errors (v1.2.0)</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -87,6 +87,8 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="logger.html#default_development_transport" class="tsd-kind-icon">DEFAULT_<wbr>DEVELOPMENT_<wbr>TRANSPORT</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="logger.html#default_production_transport" class="tsd-kind-icon">DEFAULT_<wbr>PRODUCTION_<wbr>TRANSPORT</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external"><a href="logger.html#default_transports" class="tsd-kind-icon">DEFAULT_<wbr>TRANSPORTS</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-static tsd-is-external"><a href="logger.html#instance" class="tsd-kind-icon">instance</a></li>
 							</ul>
@@ -113,7 +115,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/logger/Logger.ts#L33">logger/Logger.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/24c5488/lib/logger/Logger.ts#L67">lib/logger/Logger.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -133,19 +135,34 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
-					<a name="default_transports" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> DEFAULT_<wbr>TRANSPORTS</h3>
-					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>TRANSPORTS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol"> =&nbsp;[new winston.transports.Console({level: process.env.LOG_LEVEL || &#x27;silly&#x27;,format: winston.format.combine(enumerateErrorFormat(),winston.format.colorize(),lineFormat(),),}),]</span></div>
+					<a name="default_development_transport" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> DEFAULT_<wbr>DEVELOPMENT_<wbr>TRANSPORT</h3>
+					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>DEVELOPMENT_<wbr>TRANSPORT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConsoleTransportInstance</span><span class="tsd-signature-symbol"> = new winston.transports.Console({level: process.env.LOG_LEVEL || &quot;info&quot;,format: winston.format.combine(winston.format.errors({ stack: true }), winston.format.printf(stringfyInfo))})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/logger/Logger.ts#L24">logger/Logger.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/24c5488/lib/logger/Logger.ts#L53">lib/logger/Logger.ts:53</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The default transports thay will be enabled in the singleton.</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="default_production_transport" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> DEFAULT_<wbr>PRODUCTION_<wbr>TRANSPORT</h3>
+					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>PRODUCTION_<wbr>TRANSPORT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConsoleTransportInstance</span><span class="tsd-signature-symbol"> = new winston.transports.Console({level: process.env.LOG_LEVEL || &quot;silly&quot;,format: winston.format.combine(winston.format.errors({ stack: true }),winston.format.timestamp(),winston.format.json())})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/24c5488/lib/logger/Logger.ts#L58">lib/logger/Logger.ts:58</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+					<a name="default_transports" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> DEFAULT_<wbr>TRANSPORTS</h3>
+					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>TRANSPORTS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConsoleTransportInstance</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [Logger.DEFAULT_DEVELOPMENT_TRANSPORT]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/24c5488/lib/logger/Logger.ts#L67">lib/logger/Logger.ts:67</a></li>
+						</ul>
+					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-static tsd-is-external">
 					<a name="instance" class="tsd-anchor"></a>
@@ -153,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">instance<span class="tsd-signature-symbol">:</span> <a href="../globals.html#loggerinstance" class="tsd-signature-type">LoggerInstance</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/logger/Logger.ts#L19">logger/Logger.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/24c5488/lib/logger/Logger.ts#L51">lib/logger/Logger.ts:51</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -180,7 +197,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/logger/Logger.ts#L47">logger/Logger.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/24c5488/lib/logger/Logger.ts#L81">lib/logger/Logger.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -202,7 +219,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/b1cec99/lib/logger/Logger.ts#L59">logger/Logger.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/nxtep-io/nano-errors/blob/24c5488/lib/logger/Logger.ts#L93">lib/logger/Logger.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,7 +230,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/loggeroptions.html" class="tsd-signature-type">LoggerOptions</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <a href="../interfaces/loggeroptions.html" class="tsd-signature-type">LoggerOptions</a><span class="tsd-signature-symbol"> = {}</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The logger initialization options</p>
 									</div>
@@ -250,6 +267,12 @@
 								<a href="logger.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="logger.html#default_development_transport" class="tsd-kind-icon">DEFAULT_<wbr>DEVELOPMENT_<wbr>TRANSPORT</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
+								<a href="logger.html#default_production_transport" class="tsd-kind-icon">DEFAULT_<wbr>PRODUCTION_<wbr>TRANSPORT</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-external">
 								<a href="logger.html#default_transports" class="tsd-kind-icon">DEFAULT_<wbr>TRANSPORTS</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected tsd-is-static tsd-is-external">
@@ -268,6 +291,9 @@
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="sentrytransport.html" class="tsd-kind-icon">Sentry<wbr>Transport</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter tsd-is-external">
+						<a href="../interfaces/leveledlogmethod.html" class="tsd-kind-icon">Leveled<wbr>Log<wbr>Method</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-is-external">
 						<a href="../interfaces/loggeroptions.html" class="tsd-kind-icon">Logger<wbr>Options</a>
 					</li>
@@ -277,17 +303,23 @@
 					<li class=" tsd-kind-type-alias tsd-is-external">
 						<a href="../globals.html#loggerinstance" class="tsd-kind-icon">Logger<wbr>Instance</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-external">
-						<a href="../globals.html#enumerateerrorformat" class="tsd-kind-icon">enumerate<wbr>Error<wbr>Format</a>
+					<li class=" tsd-kind-type-alias tsd-is-external">
+						<a href="../globals.html#logmethods" class="tsd-kind-icon">log<wbr>Methods</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-external">
-						<a href="../globals.html#lineformat" class="tsd-kind-icon">line<wbr>Format</a>
+					<li class=" tsd-kind-type-alias tsd-has-type-parameter tsd-is-external">
+						<a href="../globals.html#noterror" class="tsd-kind-icon">not<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-external">
+						<a href="../globals.html#getextrainfo" class="tsd-kind-icon">get<wbr>Extra<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-external">
 						<a href="../globals.html#inheritstacktrace" class="tsd-kind-icon">inherit<wbr>Stack<wbr>Trace</a>
 					</li>
 					<li class=" tsd-kind-function tsd-is-external">
 						<a href="../globals.html#preparesentrymeta" class="tsd-kind-icon">prepare<wbr>Sentry<wbr>Meta</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-external">
+						<a href="../globals.html#stringfyinfo" class="tsd-kind-icon">stringfy<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-external">
 						<a href="../globals.html#winstonleveltosentrylevel" class="tsd-kind-icon">winston<wbr>Level<wbr>ToSentry<wbr>Level</a>
@@ -309,6 +341,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -357,7 +390,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

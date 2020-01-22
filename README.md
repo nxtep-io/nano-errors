@@ -3,6 +3,9 @@ nano-errors
 
 A minimalistic error and logging framework for a enhanced exception handling experience in TS / JS environments.
 
+## Changelog
+
+- **1.2.0**: Add `DEFAULT_PRODUCTION_TRANSPORT`, fix logger typings to disallow calls like `logger.error(new Error())`
 
 ## Getting started
 
