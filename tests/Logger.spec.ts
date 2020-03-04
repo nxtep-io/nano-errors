@@ -58,6 +58,10 @@ describe("lib.logger", () => {
       })
     );
   });
+  it("shoulld allow strings to be passed as error details", () => {
+    const logger = Logger.initialize();
+    logger.error("Sample base error", new BaseError("Unit test base error", "Sample details"));
+  });
 
   describe("some corner cases", async () => {
     it("should send simple info object with message", () => {
