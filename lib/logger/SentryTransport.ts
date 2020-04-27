@@ -1,11 +1,11 @@
 import * as Integrations from "@sentry/integrations";
+import { Options } from "@sentry/types";
 import * as Transport from "winston-transport";
 import { BaseError } from "../BaseError";
 import { prepareSentryMeta } from "../utils";
-import { Options } from "@sentry/types";
 
 export interface SentryTransportOptions extends Options, Transport.TransportStreamOptions {
-  sentryPackage: "browser" | "node" | "react-native" | "electron";
+  sentryPackage?: "browser" | "node" | "react-native" | "electron";
 }
 
 export class SentryTransport extends Transport {
@@ -17,13 +17,13 @@ export class SentryTransport extends Transport {
     super(options);
 
     if (options.sentryPackage) {
-      this.Sentry = require(options.sentryPackage);
+      this.Sentry = require(`@sentry/${options.sentryPackage}`);
     } else {
       try {
-        this.Sentry = require("@sentry/browser");
+        this.Sentry = require("@sentry/node");
       } catch {
         try {
-          this.Sentry = require("@sentry/node");
+          this.Sentry = require("@sentry/browser");
         } catch {
           try {
             this.Sentry = require("@sentry/react-native");
