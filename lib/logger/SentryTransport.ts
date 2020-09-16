@@ -56,9 +56,10 @@ export class SentryTransport extends Transport {
 
     if (info.level === "error") {
       const error = new BaseError(info, meta);
-      error.name = info["name"] || BaseError.name;
+      error.name = info["message"] || info["name"] || BaseError.name;
       this.Sentry.withScope(scope => {
         scope.setExtras(extra);
+        scope.setTags(info["tags"]);
         this.Sentry.captureException(error);
       });
     } else {
