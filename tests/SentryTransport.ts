@@ -11,6 +11,6 @@ describe("lib.logger.SentryTransport", () => {
     });
 
     logger.info("Test sentry with jest");
-    logger.error(new BaseError("Error test sentry with jest"));
+    logger.error("messaage", new BaseError("Error test sentry with jest"));
   });
 });
