@@ -9,11 +9,7 @@ export class BaseErrorDetails {
   [key: string]: any;
 
   constructor(data = {}) {
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        this[key] = data[key];
-      }
-    }
+    Object.assign(this, data);
   }
 }
 
@@ -73,7 +69,8 @@ export class BaseError extends Error {
     this.stackId = stackId;
     this.originalMessage = originalMessage;
     this.name = this.constructor.name;
-    this.details = details instanceof BaseErrorDetails ? details : new BaseErrorDetails(details);
+
+    this.details = details instanceof BaseErrorDetails || typeof details !== 'object' ? details : new BaseErrorDetails(details);
 
     // Prepare instance stack trace
     if ((input && input.stack) || details.stack) {
